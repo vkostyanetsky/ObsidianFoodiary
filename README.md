@@ -1,1 +1,1 @@
-# ObsidianFoodiary
+# Foodiary
