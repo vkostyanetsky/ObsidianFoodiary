@@ -4,8 +4,6 @@ import {
     MarkdownRenderer,
     Editor,
     MarkdownView,
-    TFile,
-    parseYaml
 } from 'obsidian';
 
 import { 
@@ -14,34 +12,9 @@ import {
     DEFAULT_SETTINGS 
 } from './settings';
 
-interface Product {
-    titles: Array<string>;
-    value: NutritionalValue
-}
+import { LogLine, NutritionalValue, Income } from './types';
 
-interface NutritionalValue {
-    calories: number;
-    protein: number;
-    fat: number;  
-    carbs: number;    
-}
-
-interface IncomeItem {
-    product: Product;
-    weight: number;
-    value: NutritionalValue;
-}
-
-interface Income {
-    total: NutritionalValue;
-    items: Array<IncomeItem>;    
-    unknownProducts: Array<String>;
-}
-
-interface LogLine {
-    title: string;
-    weight: number;
-}
+import FoodiaryProducts from './products';
 
 export default class Foodiary extends Plugin {    
     settings: FoodiarySettings;
@@ -54,7 +27,7 @@ export default class Foodiary extends Plugin {
 
 		this.addCommand({
 			id: 'insert-food-log',
-			name: 'Insert food log',
+			name: 'Insert food diary',
 			editorCallback: (editor: Editor, view: MarkdownView) => {
 				editor.replaceSelection("```foodiary\n\n```");
 			}
@@ -87,77 +60,6 @@ export default class Foodiary extends Plugin {
 	async saveSettings() {
 		await this.saveData(this.settings);
 	}
-
-    private async products2()
-    {        
-        let catalog = new Map<string, NutritionalValue>;
-
-        const { vault } = this.app;
-
-        const files = this.app.vault.getMarkdownFiles()
-        
-        for (let i = 0; i < files.length; i++) {
-
-            if (files[i] instanceof TFile && files[i].path.startsWith(this.settings.productsFolder)) {
-                let text = await vault.cachedRead(files[i])
-                
-                let regex = new RegExp("(?:---((?:.*?\r?\n?)*)---)+");
-                let match = regex.exec(text);
-
-                if (match !== null) {
-
-                    let properties = parseYaml(match[1])
-
-                    let item: NutritionalValue = {
-                        calories: properties[this.settings.propertyCalories],
-                        protein: properties[this.settings.propertyProtein],
-                        fat: properties[this.settings.propertyFat],
-                        carbs: properties[this.settings.propertyCarbs],
-                    }
-
-                    catalog.set(files[i].basename, item)
-                }
-            }            
-        }        
-
-        return catalog;
-    }
-
-    private async products(): Promise<Product[]>
-    {        
-        let result = new Array<Product>;
-
-        const { vault } = this.app;
-
-        const files = this.app.vault.getMarkdownFiles()
-        
-        for (let i = 0; i < files.length; i++) {
-
-            if (files[i] instanceof TFile && files[i].path.startsWith(this.settings.productsFolder)) {
-                let text = await vault.cachedRead(files[i])
-                
-                let regex = new RegExp("(?:---((?:.*?\r?\n?)*)---)+");
-                let match = regex.exec(text);
-
-                if (match !== null) {
-
-                    let properties = parseYaml(match[1])
-
-                    result.push({
-                        titles: [files[i].basename],
-                        value: {
-                            calories: properties[this.settings.propertyCalories],
-                            protein: properties[this.settings.propertyProtein],
-                            fat: properties[this.settings.propertyFat],
-                            carbs: properties[this.settings.propertyCarbs],
-                        }
-                    })
-                }
-            }            
-        }        
-
-        return result;
-    }    
 
     private async getLogEntry(input: string): Promise<LogLine> {
 
@@ -236,8 +138,8 @@ export default class Foodiary extends Plugin {
             unknownProducts: [],
         }
 
-        let products = await this.products();        
-                
+        let products = await FoodiaryProducts.products(this)
+                        
 		let sourceLines = source.split('\n')
 		
 		for (let sourceLine of sourceLines) {
