@@ -17,7 +17,7 @@ Please note that you can rename the properties in the plugin's settings.
 
 ### Use code block in daily notes
 
-You make daily notes, I guess. So, every day, you can add a `foodiary` code block (you can do this using "Insert food diary" command or manually) to enlist food you eat.
+You make daily notes, I guess. So, every day, you add a `foodiary` code block to enlist food you eat. You can do it manually or via the "Insert food diary" command.
 
 For instance:
 
@@ -28,6 +28,6 @@ Donuts 100
 ```
 ````
 
-Here is [an example](sample/Daily Notes) in the [sample vault](sample).
+Here is [an example](sample/Daily%20Notes) in the [sample vault](sample).
 
 The plugin takes the code block and shows total nutrition for each product you have consumed during the day, and total nutrition values for all the products.
