@@ -8,23 +8,26 @@ It is a plugin for [Obsidian](https://obsidian.md) designed to help you monitor 
 
 First of all, you should specify the "Product folder" setting in plugin's settings. It refers to a folder in your fault supposed to contain nutrition data for the food you eat.  
 
-Here is [an example](sample/Products) of the folder. Please note:
+Here is [an example](sample/Products) of the folder in the [sample vault](sample). Please note:
 
-1. Each file refers to a product.
-2. The name of each file is how you are going to refer it in your notes.
-3. There are four properties: calories number, protein number, fats number and carbs number. All values must be indicated per 100 grams.
+1. Each file refers to a product. The name of it is how you are going to refer it in your notes.
+3. Each file has four properties: `calories`, `protein`, `fat` and `carbs`. All of them supposed to contain nutritional values for the represented product and must be indicated per 100 grams.
+
+Please note that you can rename the properties in the plugin's settings.
 
 ### Insert code block in daily notes
 
-You maintain daily notes, I guess. Every day, you can add a `foodiary` code block (you can do this using "Insert food diary" command or manually). 
+You make daily notes, I guess. So, every day, you can add a `foodiary` code block (you can do this using "Insert food diary" command or manually) to enlist food you eat.
 
-In the block, you can list all the food you consume during the day. For instance:
+For instance:
 
 ````
 ```foodiary
-Eggs 100
-Apples 200
+Apples 100
+Donuts 100
 ```
 ````
+
+Here is [an example](sample/Daily Notes) in the [sample vault](sample).
 
 The plugin takes the code block and shows total nutrition for each product you have consumed during the day, and total nutrition values for all the products.
