@@ -15,7 +15,7 @@ Here is [an example](sample/Products) of the folder in the [sample vault](sample
 
 Please note that you can rename the properties in the plugin's settings.
 
-### Insert code block in daily notes
+### Use code block in daily notes
 
 You make daily notes, I guess. So, every day, you can add a `foodiary` code block (you can do this using "Insert food diary" command or manually) to enlist food you eat.
 
