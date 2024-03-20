@@ -1,6 +1,6 @@
 # Foodiary 🍅 🍒 🍊
 
-It is a plugin for [Obsidian](https://obsidian.md) designed to help you monitor nutritios of food you eat.
+It is a plugin for [Obsidian](https://obsidian.md) designed to help you monitor the nutritional value of food you eat.
 
 ## 🙂 How to use it?
 
@@ -22,8 +22,8 @@ In the block, you can list all the food you consume during the day. For instance
 
 ````
 ```foodiary
-Eggs: 100
-Apples: 200
+Eggs 100
+Apples 200
 ```
 ````
 
