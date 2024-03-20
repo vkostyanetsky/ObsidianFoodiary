@@ -146,6 +146,8 @@ export default class Foodiary extends Plugin {
 			                
             let entry = await this.getLogEntry(sourceLine)
 
+            // Empty row, I guess?
+
             if (! entry.title) {
                 continue
             }
