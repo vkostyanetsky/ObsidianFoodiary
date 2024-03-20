@@ -29,7 +29,6 @@ export default class FoodiaryCodeBlock {
             body.createEl("br")
         }
 
-
         let table = body.createEl("table")
 
         let tr = table.createEl("tr")
