@@ -121,6 +121,12 @@ export default class Foodiary extends Plugin {
         }
     }
 
+    private async processUnknownProducts(income: Income) {
+        
+        income.unknownProducts = Array.from(new Set(income.unknownProducts))
+        income.unknownProducts.sort()        
+    }
+
     private async getNutritionalValue(): Promise<NutritionalValue> {
         return {
             calories: 0,
@@ -177,7 +183,7 @@ export default class Foodiary extends Plugin {
 
         await this.calculateIncomeTotal(result)
 
-        result.unknownProducts.sort()
+        await this.processUnknownProducts(result)
 
         return result;
     }
