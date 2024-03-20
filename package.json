@@ -1,7 +1,7 @@
 {
 	"name": "foodiary",
 	"version": "1.0.0",
-	"description": "A fasting tracker plugin for Obsidian.",
+	"description": "Food tracker plugin for Obsidian.",
 	"main": "main.js",
 	"scripts": {
 		"dev": "node esbuild.config.mjs",
