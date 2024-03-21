@@ -21,7 +21,7 @@ You make daily notes, I guess. So, every day, you add a `foodiary` code block to
 
 Here is [an example](sample/Daily%20Notes) in the [sample vault](sample).
 
-For instance:
+For instance, you add this:
 
 ````
 ```foodiary
@@ -30,10 +30,12 @@ Donuts 100
 ```
 ````
 
+And you get this:
+
 | Product | Calories | Protein | Fat | Carbs |
 | ------- | -------- | ------- | --- | ----- |
-|         |          |         |     |       |
-|         |          |         |     |       |
-|         |          |         |     |       |
+| Donuts  | 296      | 6       | 13  | 39    |
+| Apples  | 47       | 1       | 1   | 10    |
+| TOTAL   | 343      | 7       | 14  | 49    |
 
-The plugin takes the code block and shows total nutrition for each product you have consumed during the day, and total nutrition values for all the products.
+So the plugin takes the food you refer to in code block, finds it in products catalog and shows total nutrition for each product you have consumed during the day.
