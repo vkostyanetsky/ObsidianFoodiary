@@ -25,12 +25,12 @@ For instance, you add this:
 
 ````
 ```foodiary
-Apples 100
-Donuts 100
+Apples 150
+Donuts 85
 ```
 ````
 
-And you get this:
+It means you ate 150 grams of apples and 85 grams of donuts. As a result, the code block will show you this:
 
 | Product | Calories | Protein | Fat | Carbs |
 | ------- | -------- | ------- | --- | ----- |
