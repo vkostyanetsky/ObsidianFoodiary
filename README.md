@@ -30,12 +30,12 @@ Donuts 85
 ```
 ````
 
-It means you ate 150 grams of apples and 85 grams of donuts. As a result, the code block will show you this:
+It means you ate 150 grams of apples and 85 grams of donuts. As a result, the code block will show you something like this:
 
 | Product | Calories | Protein | Fat | Carbs |
 | ------- | -------- | ------- | --- | ----- |
-| Donuts  | 296      | 6       | 13  | 39    |
-| Apples  | 47       | 1       | 1   | 10    |
-| TOTAL   | 343      | 7       | 14  | 49    |
+| Donuts  | 252      | 5       | 12  | 33    |
+| Apples  | 71       | 1       | 1   | 15    |
+| TOTAL   | 323      | 6       | 13  | 48    |
 
 So the plugin takes the food you refer to in the code block, finds it in the products catalog, and then shows total nutrition for each product you have consumed during the day.
