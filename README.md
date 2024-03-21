@@ -19,6 +19,8 @@ Please note that you can rename the properties in the plugin's settings.
 
 You make daily notes, I guess. So, every day, you add a `foodiary` code block to enlist food you eat. You can do it manually or via the "Insert food diary" command.
 
+Here is [an example](sample/Daily%20Notes) in the [sample vault](sample).
+
 For instance:
 
 ````
@@ -28,6 +30,10 @@ Donuts 100
 ```
 ````
 
-Here is [an example](sample/Daily%20Notes) in the [sample vault](sample).
+| Product | Calories | Protein | Fat | Carbs |
+| ------- | -------- | ------- | --- | ----- |
+|         |          |         |     |       |
+|         |          |         |     |       |
+|         |          |         |     |       |
 
 The plugin takes the code block and shows total nutrition for each product you have consumed during the day, and total nutrition values for all the products.

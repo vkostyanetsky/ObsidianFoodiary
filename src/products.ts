@@ -14,7 +14,7 @@ export default class FoodiaryProducts {
     public static async products(plugin: Foodiary) {        
 
         let products = new Array<Product>;
-
+        
         const files = plugin.app.vault.getMarkdownFiles()
         
         for (let i = 0; i < files.length; i++) {
@@ -24,16 +24,15 @@ export default class FoodiaryProducts {
             if (file instanceof TFile && file.path.startsWith(plugin.settings.productsFolder)) {
                 await this.addProduct(plugin, products, file)
             }
-
         }        
 
         return products;
     }    
 
     private static async addProduct(plugin: Foodiary, products: Array<Product>, file: TFile) {
-
+        
         let productProperties = await this.productProperties(plugin, file)
-
+        
         if (productProperties != undefined) {
 
             products.push({
@@ -47,16 +46,16 @@ export default class FoodiaryProducts {
             })
 
         }            
-
+    
     }    
     
     private static async productProperties(plugin: Foodiary, file: TFile) {
      
         let text = await plugin.app.vault.cachedRead(file)
-            
-        let regex = new RegExp("(?:---((?:.*?\r?\n?)*)---)+");
+        
+        let regex = new RegExp("(?:---((?:.*?\r?\n?)*)---)+"); 
         let match = regex.exec(text);
-
+        
         return match !== null ? parseYaml(match[1]) : undefined;
     }
 

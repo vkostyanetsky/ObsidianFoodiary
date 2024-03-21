@@ -1,9 +1,11 @@
 import { 
     MarkdownPostProcessorContext,    
     MarkdownRenderer,
+    TFile,
+    parseYaml,        
 } from 'obsidian';
 
-import { LogLine, NutritionalValue, Income } from '../types';
+import { Product, LogLine, NutritionalValue, Income } from '../types';
 
 import FoodiaryProducts from '../products';
 
@@ -14,7 +16,7 @@ export default class FoodiaryCodeBlock {
     public static async renderDiary(plugin: Foodiary, src: string, body: HTMLElement, ctx: MarkdownPostProcessorContext) 
     {
         let income = await this.income(plugin, src)
-        
+
         if (income.unknownProducts.length > 0) {
 
             let upLines = []
@@ -28,7 +30,7 @@ export default class FoodiaryCodeBlock {
             MarkdownRenderer.render(plugin.app, upLines.join("\n"), body, "", plugin)
             body.createEl("br")
         }
-
+        
         let table = body.createEl("table")
 
         let tr = table.createEl("tr")
@@ -66,9 +68,9 @@ export default class FoodiaryCodeBlock {
             total: await this.getNutritionalValue(),
             unknownProducts: [],
         }
-
+        
         let products = await FoodiaryProducts.products(plugin)
-                        
+        
 		let sourceLines = source.split('\n')
 		
 		for (let sourceLine of sourceLines) {
@@ -76,7 +78,7 @@ export default class FoodiaryCodeBlock {
             let entry = await this.getLogEntry(sourceLine)
 
             // Empty row, I guess?
-
+            
             if (! entry.title) {
                 continue
             }
