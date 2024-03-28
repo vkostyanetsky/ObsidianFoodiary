@@ -1,8 +1,6 @@
 import { 
     MarkdownPostProcessorContext,    
     MarkdownRenderer,
-    TFile,
-    parseYaml,        
 } from 'obsidian';
 
 import { Product, LogLine, NutritionalValue, Income } from '../types';
@@ -21,7 +19,7 @@ export default class FoodiaryCodeBlock {
 
             let upLines = []
 
-            upLines.push("> [!missing] Missing Products")
+            upLines.push("> [!missing] Missing products")
 
             for (let item of income.unknownProducts) {
                 upLines.push(`> - [[${plugin.settings.productsFolder}/${item.toString()}|${item.toString()}]]`)
