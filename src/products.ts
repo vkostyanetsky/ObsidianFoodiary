@@ -51,12 +51,7 @@ export default class FoodiaryProducts {
     
     private static async productProperties(plugin: Foodiary, file: TFile) {
      
-        let text = await plugin.app.vault.cachedRead(file)
-        
-        let regex = new RegExp("(?:---((?:.*?\r?\n?)*)---)+"); 
-        let match = regex.exec(text);
-        
-        return match !== null ? parseYaml(match[1]) : undefined;
+        return plugin.app.metadataCache.getFileCache(file)?.frontmatter;
     }
 
 }
