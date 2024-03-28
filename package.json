@@ -1,6 +1,6 @@
 {
 	"name": "foodiary",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Food tracker plugin for Obsidian.",
 	"main": "main.js",
 	"scripts": {
