@@ -62,7 +62,6 @@ export default class FoodiaryCodeBlock {
     }
 
     private static async income(plugin: Foodiary, source: string) {
-
         let result: Income = {
             items: [],
             total: await this.getNutritionalValue(),
@@ -114,7 +113,6 @@ export default class FoodiaryCodeBlock {
     }
 
     private static async calculateIncomeItemValues(income: Income) {
-
         for (let item of income.items) {
             item.value.calories = Math.ceil(item.product.value.calories * item.weight / 100)
             item.value.protein  = Math.ceil(item.product.value.protein  * item.weight / 100)
@@ -123,8 +121,7 @@ export default class FoodiaryCodeBlock {
         }
     }
 
-    private static async processUnknownProducts(income: Income) {
-        
+    private static async processUnknownProducts(income: Income) {        
         income.unknownProducts = Array.from(new Set(income.unknownProducts))
         income.unknownProducts.sort()        
     }
@@ -138,7 +135,6 @@ export default class FoodiaryCodeBlock {
     }
 
     private static async calculateIncomeTotal(income: Income) {
-
         for (let item of income.items) {
             this.addNutritionalValue(income.total, item.value)
         }
@@ -161,7 +157,6 @@ export default class FoodiaryCodeBlock {
     }
 
     private static async getLogEntry(input: string): Promise<LogLine> {
-
         let result: LogLine = {
             title: "",
             weight: 0
@@ -170,21 +165,16 @@ export default class FoodiaryCodeBlock {
         input = input.trim()
         
         if (input != "") {
-
             let inputParts = input.split(" ")
 
             if (inputParts.length > 1) {
-
                 let weightString = inputParts.pop()    
 
-                if (weightString != undefined) {                    
-
-                    try 
-                    {            
+                if (weightString != undefined) {
+                    try {            
                         result.weight = await Parser.parse(weightString).evaluate()
                     }
-                    catch (error) 
-                    {
+                    catch (error) {
                         throw new Error(`unable to parse weight of food in "${input}"`)
                     }                    
                 }                

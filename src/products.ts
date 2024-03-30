@@ -35,20 +35,32 @@ export default class FoodiaryProducts {
         
         if (productProperties != undefined) {
 
-            products.push({
+            let product = {
                 titles: [file.basename],
                 value: {
-                    calories:   productProperties[plugin.settings.propertyCalories],
-                    protein:    productProperties[plugin.settings.propertyProtein],
-                    fat:        productProperties[plugin.settings.propertyFat],
-                    carbs:      productProperties[plugin.settings.propertyCarbs],
+                    calories: productProperties[plugin.settings.propertyCalories],
+                    protein:  productProperties[plugin.settings.propertyProtein],
+                    fat:      productProperties[plugin.settings.propertyFat],
+                    carbs:    productProperties[plugin.settings.propertyCarbs],
                 }
-            })
+            }
 
+            await this.checkProperty(product.value.calories, plugin.settings.propertyCalories, file)
+            await this.checkProperty(product.value.protein, plugin.settings.propertyProtein, file)
+            await this.checkProperty(product.value.fat, plugin.settings.propertyFat, file)
+            await this.checkProperty(product.value.carbs, plugin.settings.propertyCarbs, file)
+
+            products.push(product)
         }            
     
-    }    
+    }
     
+    private static async checkProperty(propertyValue: any, propertyName: string, file: TFile) {
+        if (typeof propertyValue !== "number") {
+            throw Error(`type of "${propertyName}" property in "${file.name}" note is not number`)
+        }
+    }    
+
     private static async productProperties(plugin: Foodiary, file: TFile) {
      
         return plugin.app.metadataCache.getFileCache(file)?.frontmatter;

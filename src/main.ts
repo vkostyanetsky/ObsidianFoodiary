@@ -40,7 +40,7 @@ export default class Foodiary extends Plugin {
             }
             catch (error) 
             {
-                el.createEl("h3", {text: `Failed to show log: ${error.message}`});
+                el.createEl("h3", {text: `Failed to render a food diary: ${error.message}`});
             }
 
         });

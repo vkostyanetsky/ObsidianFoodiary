@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.1 - ?
+
+### Added
+
+* The code block now shows error is a product` property type is not number.
+
 ## 1.1.0 - 2024-03-30
 
 ### Added

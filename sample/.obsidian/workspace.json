@@ -13,13 +13,26 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "Products/Apples.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "76bc64f213bd54d0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "Daily Notes/2024-01-03.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -146,14 +159,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "99c8d32d5d06e04f",
+  "active": "76bc64f213bd54d0",
   "lastOpenFiles": [
     "Daily Notes/2024-01-02.md",
-    "Daily Notes/2024-01-01.md",
-    "Daily Notes/2024-01-03.md",
-    "Products/Apples.md",
     "Products/Donuts.md",
     "Welcome.md",
+    "Daily Notes/2024-01-03.md",
+    "Products/Apples.md",
+    "Daily Notes/2024-01-01.md",
     "Products/Пончики.md",
     "Products/Banana.md",
     "Products/Бананы.md",
