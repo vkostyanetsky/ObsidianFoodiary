@@ -21,7 +21,7 @@ You make daily notes, I guess. So, every day, you add a `foodiary` code block to
 
 Here is [an example](sample/Daily%20Notes) in the [sample vault](sample).
 
-For instance, you add this:
+For instance, you ate 300 grams of apples and 85 grams of donuts. So, you add this:
 
 ````
 ```foodiary
@@ -30,7 +30,7 @@ Donuts 85
 ```
 ````
 
-It means you ate 300 grams of apples and 85 grams of donuts. As a result, the code block will show you something like this:
+As a result, the code block shows you something like this:
 
 | Product | Calories | Protein | Fat | Carbs |
 | ------- | -------- | ------- | --- | ----- |
