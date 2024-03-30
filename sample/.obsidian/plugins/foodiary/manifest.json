@@ -1,9 +1,9 @@
 {
 	"id": "foodiary",
 	"name": "Foodiary",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"minAppVersion": "1.5.3",
-	"description": "Food tracker, macro & calorie calculator.",
+	"description": "Food tracker, macronutrient and calorie calculator.",
 	"author": "vkostyanetsky",
 	"authorUrl": "https://github.com/vkostyanetsky",
 	"isDesktopOnly": false
