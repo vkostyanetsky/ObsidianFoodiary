@@ -25,19 +25,17 @@ For instance, you add this:
 
 ````
 ```foodiary
-Apples 150
+Apples 150+150
 Donuts 85
 ```
 ````
 
-It means you ate 150 grams of apples and 85 grams of donuts. As a result, the code block will show you something like this:
+It means you ate 300 grams of apples and 85 grams of donuts. As a result, the code block will show you something like this:
 
 | Product | Calories | Protein | Fat | Carbs |
 | ------- | -------- | ------- | --- | ----- |
 | Donuts  | 252      | 5       | 12  | 33    |
-| Apples  | 71       | 1       | 1   | 15    |
-| TOTAL   | 323      | 6       | 13  | 48    |
-
-Bear in mind that you can use mathematical expressions instead of specifying the exact weight of food (for instance, "Donuts: 100+120+120", "Apples: 200*2", etc.).
+| Apples  | 141      | 2       | 2   | 30    |
+| TOTAL   | 393      | 7       | 14  | 63    |
 
 So the plugin takes the food you refer to in the code block, finds it in the products catalog, and then shows total nutrition for each product you have consumed during the day.
