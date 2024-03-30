@@ -3,7 +3,9 @@ import {
     MarkdownRenderer,
 } from 'obsidian';
 
-import { Product, LogLine, NutritionalValue, Income } from '../types';
+import { Parser } from 'expr-eval';
+
+import { LogLine, NutritionalValue, Income } from '../types';
 
 import FoodiaryProducts from '../products';
 
@@ -175,8 +177,8 @@ export default class FoodiaryCodeBlock {
 
                 let weightString = inputParts.pop()    
 
-                if (weightString != undefined) {
-                    result.weight = parseInt(weightString);
+                if (weightString != undefined) {                    
+                    result.weight = Parser.parse(weightString).evaluate()
                 }                
             }
 
