@@ -178,7 +178,15 @@ export default class FoodiaryCodeBlock {
                 let weightString = inputParts.pop()    
 
                 if (weightString != undefined) {                    
-                    result.weight = Parser.parse(weightString).evaluate()
+
+                    try 
+                    {            
+                        result.weight = await Parser.parse(weightString).evaluate()
+                    }
+                    catch (error) 
+                    {
+                        throw new Error(`unable to parse weight of food in "${input}"`)
+                    }                    
                 }                
             }
 
