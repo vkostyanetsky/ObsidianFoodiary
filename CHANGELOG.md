@@ -5,6 +5,7 @@
 ### Added
 
 * The code block now shows error is a product` property type is not number.
+* Now it is possible to set product' aliases and use them in a code block.
 
 ## 1.1.0 - 2024-03-30
 
