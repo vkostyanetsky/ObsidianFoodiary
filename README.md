@@ -10,7 +10,7 @@ First, you should specify the "Product folder" in the plugin's settings ("Produc
 
 Here is [an example](sample/Products) of the folder in the [sample vault](sample). Please note:
 
-1. Each file refers to a product. The name of it is how you are going to refer it in your notes. You can also use the standard "aliases" property: for instance, you are able to create a note named "Apple", and then set the aliases: "Apples", "Red apples", etc. Take a look at sample vault using the link above.
+1. Each file refers to a product. The name of it is how you are going to refer it in your notes. You can also use the standard "aliases" property: for instance, you are able to create a note named "Apple", and then set the aliases: "Apples", "Red apples", etc. Take a look at example in the sample vault by the link above.
 3. Each file has four properties: `calories`, `protein`, `fat` and `carbs`. All of them are supposed to contain nutritional values for the represented product and must be indicated per 100 grams.
 
 Please note that you can rename those properties in the plugin's settings.
