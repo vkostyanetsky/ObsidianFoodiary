@@ -1,4 +1,4 @@
-# Obsidian Foodiary 🥣 🥪 🍎
+# Obsidian Foodiary 🥪 🍎 🍗
 
 It is a plugin for [Obsidian](https://obsidian.md) designed to help you monitor the nutritional value of the food you eat.
 
