@@ -11,7 +11,7 @@
 
 ### Added
 
-* You can now use mathematical expressions instead of specifying the exact weight of food (for instance, "Donuts: 100+120+120", "Apples: 200*2", etc.).
+* You can now use mathematical expressions instead of specifying the exact weight of food (for instance, "Donuts 100+120+120", "Apples 200*2", etc.).
 
 ## 1.0.1 - 2024-03-28
 
