@@ -1,11 +1,15 @@
 # Changelog
 
-## 1.2.0 - ?
+## 1.2.0 - 2024-04-07
 
 ### Added
 
 * The code block now shows error is a product` property type is not number.
 * Now it is possible to set product' aliases and use them in a code block.
+
+### Changed
+
+* Made products search case insensitive (for example, "apple" now matches with "Apple").
 
 ## 1.1.0 - 2024-03-30
 

@@ -1,4 +1,5 @@
 export interface Product {
+    title: string;
     titles: Array<string>;
     value: NutritionalValue
 }

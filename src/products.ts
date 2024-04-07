@@ -35,15 +35,16 @@ export default class FoodiaryProducts {
         
         if (productProperties != undefined) {
 
-            let titles = [file.basename]
+            let titles = [file.basename.toLowerCase()]
 
             if (productProperties.aliases !== undefined) {
                 productProperties.aliases.forEach((element: string) => {
-                    titles.push(element)
+                    titles.push(element.toLowerCase())
                 });
             }
             
             let product = {
+                title: file.basename,
                 titles: titles,
                 value: {
                     calories: productProperties[plugin.settings.propertyCalories],

@@ -44,7 +44,7 @@ export default class FoodiaryCodeBlock {
 
             tr = table.createEl("tr")
 
-            tr.createEl("td", {text: item.product.titles[0]})
+            tr.createEl("td", {text: item.product.title})
             tr.createEl("td", {text: item.value.calories.toString()})
             tr.createEl("td", {text: item.value.protein.toString()})
             tr.createEl("td", {text: item.value.fat.toString()})
@@ -81,8 +81,10 @@ export default class FoodiaryCodeBlock {
             if (! entry.title) {
                 continue
             }
-                
-            let product = products.find(el => el.titles.find(el => el == entry.title))
+
+            let titleToSearch = entry.title.toLowerCase()
+
+            let product = products.find(el => el.titles.find(el => el == titleToSearch))
                 
             if (product === undefined) {			
                 result.unknownProducts.push(entry.title)
