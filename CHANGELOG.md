@@ -4,7 +4,7 @@
 
 ### Added
 
-* The code block now shows error is a product` property type is not number.
+* The code block now shows error if a product` property type is not number.
 * Now it is possible to set product' aliases and use them in a code block.
 
 ### Changed
