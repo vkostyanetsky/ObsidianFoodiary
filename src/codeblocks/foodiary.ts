@@ -91,7 +91,7 @@ export default class FoodiaryCodeBlock {
                 continue
             }
 
-            let incomeItem = result.items.find(el => el.product.titles.find(el => el == entry.title))
+            let incomeItem = result.items.find(el => el.product.titles.find(el => el == titleToSearch))
             if (incomeItem == undefined) {
                 result.items.push({
                     product: product,

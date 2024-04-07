@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.1 - 2024-04-07
+
+### Changed
+
+* Fixed a bug due to which identical products in the code block were not collapsed into one.
+
 ## 1.2.0 - 2024-04-07
 
 ### Added
