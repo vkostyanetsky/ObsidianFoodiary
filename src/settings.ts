@@ -6,6 +6,8 @@ import {
 import Foodiary from './main';
 
 export interface FoodiarySettings {
+    showProductFolderTitles: boolean;
+    groupEntriesByTitles: boolean;
 	productsFolder: string;
     propertyCalories: string;
     propertyProtein: string;
@@ -14,6 +16,8 @@ export interface FoodiarySettings {
 }
 
 export const DEFAULT_SETTINGS: FoodiarySettings = {
+    showProductFolderTitles: true,
+    groupEntriesByTitles: true,
 	productsFolder: "Products",
     propertyCalories: "calories",
     propertyProtein: "protein",
@@ -33,6 +37,28 @@ export class FoodiarySettingTab extends PluginSettingTab {
 		const {containerEl} = this;
 
 		containerEl.empty();
+
+        new Setting(containerEl)
+            .setName('Show product folder titles')
+            .setDesc('Enable this option if you want to see product titles as they set in the products folder, instead of product titles you enter in a code block. For example, "apple 100" will be shown as "Apples 100" since the its file in the folder named "Apples.md".')
+            .addToggle(text => text
+                .setValue(this.plugin.settings.showProductFolderTitles)
+                .onChange(async (value) => {
+                    this.plugin.settings.showProductFolderTitles = value;
+                    await this.plugin.saveSettings();
+                }));                
+
+        new Setting(containerEl)
+            .setName('Group entries by titles')
+            .setDesc('If enabled, entries in the code block will be grouped by a title. For instance, "Apple 100" and "Apple 150" will be calculated as "Apple 250".')
+            .addToggle(text => text
+                .setValue(this.plugin.settings.groupEntriesByTitles)
+                .onChange(async (value) => {
+                    this.plugin.settings.groupEntriesByTitles = value;
+                    await this.plugin.saveSettings();
+                }));                
+
+        containerEl.createEl("h2", { text: "Products" });
 
 		new Setting(containerEl)
 			.setName('Products folder')

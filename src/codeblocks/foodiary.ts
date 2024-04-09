@@ -44,7 +44,7 @@ export default class FoodiaryCodeBlock {
 
             tr = table.createEl("tr")
 
-            tr.createEl("td", {text: item.product.title})
+            tr.createEl("td", {text: item.title})
             tr.createEl("td", {text: item.value.calories.toString()})
             tr.createEl("td", {text: item.value.protein.toString()})
             tr.createEl("td", {text: item.value.fat.toString()})
@@ -91,11 +91,16 @@ export default class FoodiaryCodeBlock {
                 continue
             }
 
-            let incomeItem = result.items.find(el => el.product.titles.find(el => el == titleToSearch))
+            let incomeTitle = plugin.settings.showProductFolderTitles ? product.title : entry.title;
+            let incomeItem = plugin.settings.groupEntriesByTitles
+                ? result.items.find(el => el.title == incomeTitle)
+                : undefined;
+
             if (incomeItem == undefined) {
-                result.items.push({
+                result.items.push({                    
                     product: product,
-                    weight: 0,
+                    weight: 0,                    
+                    title: incomeTitle,
                     value: await this.getNutritionalValue(),
                 })
                 incomeItem = result.items[result.items.length - 1]

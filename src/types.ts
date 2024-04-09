@@ -11,9 +11,10 @@ export interface NutritionalValue {
     carbs: number;    
 }
 
-export interface IncomeItem {
+export interface IncomeItem {    
     product: Product;
     weight: number;
+    title: string;
     value: NutritionalValue;
 }
 

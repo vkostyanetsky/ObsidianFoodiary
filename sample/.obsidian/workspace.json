@@ -11,8 +11,12 @@
             "id": "26f57a06aa4563f2",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "Daily Notes/2024-01-02.md",
+                "mode": "source",
+                "source": false
+              }
             }
           }
         ]
@@ -81,6 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "Daily Notes/2024-01-02.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -97,6 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Daily Notes/2024-01-02.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -118,7 +124,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "Daily Notes/2024-01-02.md"
+              }
             }
           }
         ]
@@ -140,12 +148,12 @@
   },
   "active": "26f57a06aa4563f2",
   "lastOpenFiles": [
-    "Products/Apples.md",
     "Daily Notes/2024-01-03.md",
-    "Products/Donuts.md",
     "Daily Notes/2024-01-02.md",
-    "Welcome.md",
     "Daily Notes/2024-01-01.md",
+    "Products/Apples.md",
+    "Products/Donuts.md",
+    "Welcome.md",
     "Products/Пончики.md",
     "Products/Banana.md",
     "Products/Бананы.md",

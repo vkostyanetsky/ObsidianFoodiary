@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.3.0 - ?
+
+### Added
+
+* "Show product folder titles" setting makes you see original product names seen, as they set in code block.
+* "Group entries by titles" setting which allows a user to disable automatic grouping if they needs to.
+
 ## 1.2.1 - 2024-04-07
 
 ### Changed
