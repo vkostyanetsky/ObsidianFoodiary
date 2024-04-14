@@ -1,5 +1,7 @@
 # Obsidian Foodiary 🥪 🍎 🪵
 
+[![ESLint](https://github.com/vkostyanetsky/ObsidianFoodiary/actions/workflows/eslint.yml/badge.svg)](https://github.com/vkostyanetsky/ObsidianFoodiary/actions/workflows/eslint.yml)
+
 It is a plugin for [Obsidian](https://obsidian.md) designed to help you monitor the nutritional value of the food you eat.
 
 ## 🙂 How to use it?
