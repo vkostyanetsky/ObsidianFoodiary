@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Daily Notes/2024-01-02.md",
+                "file": "Daily Notes/2024-01-01.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Daily Notes/2024-01-02.md",
+                "file": "Daily Notes/2024-01-01.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Daily Notes/2024-01-02.md",
+                "file": "Daily Notes/2024-01-01.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Daily Notes/2024-01-02.md"
+                "file": "Daily Notes/2024-01-01.md"
               }
             }
           }
@@ -151,8 +151,8 @@
     "Daily Notes/2024-01-03.md",
     "Daily Notes/2024-01-02.md",
     "Daily Notes/2024-01-01.md",
-    "Products/Apples.md",
     "Products/Donuts.md",
+    "Products/Apples.md",
     "Welcome.md",
     "Products/Пончики.md",
     "Products/Banana.md",

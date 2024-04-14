@@ -36,7 +36,7 @@ export default class FoodiaryProducts {
 
             const titles = [file.basename.toLowerCase()]
 
-            if (productProperties.aliases !== undefined) {
+            if (productProperties.aliases !== null) {
                 productProperties.aliases.forEach((element: string) => {
                     titles.push(element.toLowerCase())
                 });
