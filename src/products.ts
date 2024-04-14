@@ -1,6 +1,5 @@
 import {
     TFile,
-    parseYaml,    
 } from 'obsidian';
 
 import {
@@ -13,13 +12,13 @@ export default class FoodiaryProducts {
 
     public static async products(plugin: Foodiary) {        
 
-        let products = new Array<Product>;
-        
+        const products = new Array<Product>;        
+
         const files = plugin.app.vault.getMarkdownFiles()
         
         for (let i = 0; i < files.length; i++) {
 
-            let file = files[i]
+            const file = files[i]
 
             if (file instanceof TFile && file.path.startsWith(plugin.settings.productsFolder)) {
                 await this.addProduct(plugin, products, file)
@@ -31,11 +30,11 @@ export default class FoodiaryProducts {
 
     private static async addProduct(plugin: Foodiary, products: Array<Product>, file: TFile) {
         
-        let productProperties = await this.productProperties(plugin, file)
+        const productProperties = await this.productProperties(plugin, file)
         
         if (productProperties != undefined) {
 
-            let titles = [file.basename.toLowerCase()]
+            const titles = [file.basename.toLowerCase()]
 
             if (productProperties.aliases !== undefined) {
                 productProperties.aliases.forEach((element: string) => {
@@ -43,7 +42,7 @@ export default class FoodiaryProducts {
                 });
             }
             
-            let product = {
+            const product = {
                 title: file.basename,
                 titles: titles,
                 value: {
@@ -64,7 +63,7 @@ export default class FoodiaryProducts {
     
     }
     
-    private static async checkProperty(propertyValue: any, propertyName: string, file: TFile) {
+    private static async checkProperty(propertyValue: number, propertyName: string, file: TFile) {
         if (typeof propertyValue !== "number") {
             throw Error(`type of "${propertyName}" property in "${file.name}" note is not number`)
         }

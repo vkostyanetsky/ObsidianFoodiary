@@ -21,7 +21,7 @@ export interface IncomeItem {
 export interface Income {
     total: NutritionalValue;
     items: Array<IncomeItem>;    
-    unknownProducts: Array<String>;
+    unknownProducts: Array<string>;
 }
 
 export interface LogLine {

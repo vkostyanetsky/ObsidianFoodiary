@@ -15,15 +15,15 @@ export default class FoodiaryCodeBlock {
 
     public static async renderDiary(plugin: Foodiary, src: string, body: HTMLElement, ctx: MarkdownPostProcessorContext) 
     {
-        let income = await this.income(plugin, src)
+        const income = await this.income(plugin, src)
 
         if (income.unknownProducts.length > 0) {
 
-            let upLines = []
+            const upLines = []
 
             upLines.push("> [!missing] Missing products")
 
-            for (let item of income.unknownProducts) {
+            for (const item of income.unknownProducts) {
                 upLines.push(`> - [[${plugin.settings.productsFolder}/${item.toString()}|${item.toString()}]]`)
             }
             
@@ -31,7 +31,7 @@ export default class FoodiaryCodeBlock {
             body.createEl("br")
         }
         
-        let table = body.createEl("table")
+        const table = body.createEl("table")
 
         let tr = table.createEl("tr")
         tr.createEl("th", {text: "Product"})
@@ -40,7 +40,7 @@ export default class FoodiaryCodeBlock {
         tr.createEl("th", {text: "Fat"})
         tr.createEl("th", {text: "Carbs"})
 
-        for (let item of income.items) {
+        for (const item of income.items) {
 
             tr = table.createEl("tr")
 
@@ -62,19 +62,19 @@ export default class FoodiaryCodeBlock {
     }
 
     private static async income(plugin: Foodiary, source: string) {
-        let result: Income = {
+        const result: Income = {
             items: [],
             total: await this.getNutritionalValue(),
             unknownProducts: [],
         }
         
-        let products = await FoodiaryProducts.products(plugin)
+        const products = await FoodiaryProducts.products(plugin)
         
-		let sourceLines = source.split('\n')
-		
-		for (let sourceLine of sourceLines) {
-			                
-            let entry = await this.getLogEntry(sourceLine)
+        const sourceLines = source.split('\n')
+
+        for (const sourceLine of sourceLines) {
+
+            const entry = await this.getLogEntry(sourceLine)
 
             // Empty row, I guess?
             
@@ -82,16 +82,16 @@ export default class FoodiaryCodeBlock {
                 continue
             }
 
-            let titleToSearch = entry.title.toLowerCase()
+            const titleToSearch = entry.title.toLowerCase()
 
-            let product = products.find(el => el.titles.find(el => el == titleToSearch))
+            const product = products.find(el => el.titles.find(el => el == titleToSearch))
                 
             if (product === undefined) {			
                 result.unknownProducts.push(entry.title)
                 continue
             }
 
-            let incomeTitle = plugin.settings.showProductFolderTitles ? product.title : entry.title;
+            const incomeTitle = plugin.settings.showProductFolderTitles ? product.title : entry.title;
             let incomeItem = plugin.settings.groupEntriesByTitles
                 ? result.items.find(el => el.title == incomeTitle)
                 : undefined;
@@ -107,7 +107,7 @@ export default class FoodiaryCodeBlock {
             }
                     
             incomeItem.weight += entry.weight
-		}
+        }
         
         await this.calculateIncomeItemValues(result)
         await this.sortIncomeItemsByCalories(result)
@@ -120,7 +120,7 @@ export default class FoodiaryCodeBlock {
     }
 
     private static async calculateIncomeItemValues(income: Income) {
-        for (let item of income.items) {
+        for (const item of income.items) {
             item.value.calories = Math.ceil(item.product.value.calories * item.weight / 100)
             item.value.protein  = Math.ceil(item.product.value.protein  * item.weight / 100)
             item.value.fat      = Math.ceil(item.product.value.fat      * item.weight / 100)
@@ -142,7 +142,7 @@ export default class FoodiaryCodeBlock {
     }
 
     private static async calculateIncomeTotal(income: Income) {
-        for (let item of income.items) {
+        for (const item of income.items) {
             this.addNutritionalValue(income.total, item.value)
         }
     }
@@ -164,7 +164,7 @@ export default class FoodiaryCodeBlock {
     }
 
     private static async getLogEntry(input: string): Promise<LogLine> {
-        let result: LogLine = {
+        const result: LogLine = {
             title: "",
             weight: 0
         }
@@ -172,10 +172,10 @@ export default class FoodiaryCodeBlock {
         input = input.trim()
         
         if (input != "") {
-            let inputParts = input.split(" ")
+            const inputParts = input.split(" ")
 
             if (inputParts.length > 1) {
-                let weightString = inputParts.pop()    
+                const weightString = inputParts.pop()    
 
                 if (weightString != undefined) {
                     try {            
