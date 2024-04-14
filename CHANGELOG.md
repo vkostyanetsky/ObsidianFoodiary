@@ -1,11 +1,15 @@
 # Changelog
 
-## Upcoming release
+## 1.2.2 - 2024-04-14
 
 ### Added
 
 * "Show product folder titles" setting makes you see original product names seen, as they set in code block.
 * "Group entries by titles" setting which allows a user to disable automatic grouping if they needs to.
+
+### Changed
+
+* Fixed a bug due to which empty `aliases` property of a note in products folder was making the codeblock inoperable.
 
 ## 1.2.1 - 2024-04-07
 
