@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.3 - 2024-04-15
+
+### Changed
+
+* Removed a behaviour which was making the codeblock inoperable if a product property was not a number.
+
 ## 1.2.2 - 2024-04-14
 
 ### Added
