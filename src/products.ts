@@ -62,12 +62,6 @@ export default class FoodiaryProducts {
         return typeof propertyValue == "number" ? propertyValue : 0;
     }       
 
-    private static async checkProperty(propertyValue: number, propertyName: string, file: TFile) {
-        if (typeof propertyValue !== "number") {
-            throw Error(`type of "${propertyName}" property in "${file.name}" note is not number`)
-        }
-    }    
-
     private static async productProperties(plugin: Foodiary, file: TFile) {
      
         return plugin.app.metadataCache.getFileCache(file)?.frontmatter;
