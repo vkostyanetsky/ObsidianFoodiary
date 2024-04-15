@@ -168,7 +168,7 @@ export default class FoodiaryCodeBlock {
             title: "",
             weight: 0
         }
-
+        
         input = input.trim()
         
         if (input != "") {
@@ -182,8 +182,8 @@ export default class FoodiaryCodeBlock {
                         result.weight = await Parser.parse(weightString).evaluate()
                     }
                     catch (error) {
-                        throw new Error(`unable to parse weight of food in "${input}"`)
-                    }                    
+                        throw new Error(`Unable to parse weight of food in "${input}."`)
+                    }
                 }                
             }
 

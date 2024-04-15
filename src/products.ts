@@ -21,7 +21,14 @@ export default class FoodiaryProducts {
             const file = files[i]
 
             if (file instanceof TFile && file.path.startsWith(plugin.settings.productsFolder)) {
-                await this.addProduct(plugin, products, file)
+                
+                try {            
+                    await this.addProduct(plugin, products, file);
+                }
+                catch (error) {
+                    console.log(`An error "${error}" occured while loading a product from "${file.name}".`);
+                }
+                
             }
         }        
 
@@ -50,12 +57,11 @@ export default class FoodiaryProducts {
                     protein:  this.propertyValue(productProperties[plugin.settings.propertyProtein]),
                     fat:      this.propertyValue(productProperties[plugin.settings.propertyFat]),
                     carbs:    this.propertyValue(productProperties[plugin.settings.propertyCarbs]),
-                }
+                }                
             }
 
             products.push(product)
-        }            
-    
+        }
     }
 
     private static propertyValue(propertyValue: number) {
@@ -63,7 +69,6 @@ export default class FoodiaryProducts {
     }       
 
     private static async productProperties(plugin: Foodiary, file: TFile) {
-     
         return plugin.app.metadataCache.getFileCache(file)?.frontmatter;
     }
 
