@@ -21,7 +21,14 @@ export default class FoodiaryProducts {
             const file = files[i]
 
             if (file instanceof TFile && file.path.startsWith(plugin.settings.productsFolder)) {
-                await this.addProduct(plugin, products, file)
+                
+                try {            
+                    await this.addProduct(plugin, products, file);
+                }
+                catch (error) {
+                    console.log(`An error "${error}" occured while loading a product from "${file.name}".`);
+                }
+                
             }
         }        
 
@@ -36,7 +43,7 @@ export default class FoodiaryProducts {
 
             const titles = [file.basename.toLowerCase()]
 
-            if (productProperties.aliases !== null) {
+            if (productProperties.aliases != null) {
                 productProperties.aliases.forEach((element: string) => {
                     titles.push(element.toLowerCase())
                 });
@@ -46,31 +53,22 @@ export default class FoodiaryProducts {
                 title: file.basename,
                 titles: titles,
                 value: {
-                    calories: productProperties[plugin.settings.propertyCalories],
-                    protein:  productProperties[plugin.settings.propertyProtein],
-                    fat:      productProperties[plugin.settings.propertyFat],
-                    carbs:    productProperties[plugin.settings.propertyCarbs],
-                }
+                    calories: this.propertyValue(productProperties[plugin.settings.propertyCalories]),
+                    protein:  this.propertyValue(productProperties[plugin.settings.propertyProtein]),
+                    fat:      this.propertyValue(productProperties[plugin.settings.propertyFat]),
+                    carbs:    this.propertyValue(productProperties[plugin.settings.propertyCarbs]),
+                }                
             }
 
-            await this.checkProperty(product.value.calories, plugin.settings.propertyCalories, file)
-            await this.checkProperty(product.value.protein, plugin.settings.propertyProtein, file)
-            await this.checkProperty(product.value.fat, plugin.settings.propertyFat, file)
-            await this.checkProperty(product.value.carbs, plugin.settings.propertyCarbs, file)
-
             products.push(product)
-        }            
-    
-    }
-    
-    private static async checkProperty(propertyValue: number, propertyName: string, file: TFile) {
-        if (typeof propertyValue !== "number") {
-            throw Error(`type of "${propertyName}" property in "${file.name}" note is not number`)
         }
-    }    
+    }
+
+    private static propertyValue(propertyValue: number) {
+        return typeof propertyValue == "number" ? propertyValue : 0;
+    }       
 
     private static async productProperties(plugin: Foodiary, file: TFile) {
-     
         return plugin.app.metadataCache.getFileCache(file)?.frontmatter;
     }
 
