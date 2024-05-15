@@ -58,7 +58,7 @@ export class FoodiarySettingTab extends PluginSettingTab {
                     await this.plugin.saveSettings();
                 }));                
 
-        containerEl.createEl("h2", { text: "Products" });
+        new Setting(containerEl).setName('Products').setHeading();
 
 		new Setting(containerEl)
 			.setName('Products folder')
