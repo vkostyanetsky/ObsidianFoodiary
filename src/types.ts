@@ -7,11 +7,14 @@ export interface Product {
 export interface NutritionalValue {
     calories: number;
     protein: number;
-    fat: number;  
-    carbs: number;    
+    fat: number;
+	carbs: number;
+	cholesterol: number;
+	sodium: number;
+	fiber: number;
 }
 
-export interface IncomeItem {    
+export interface IncomeItem {
     product: Product;
     weight: number;
     title: string;
@@ -20,7 +23,7 @@ export interface IncomeItem {
 
 export interface Income {
     total: NutritionalValue;
-    items: Array<IncomeItem>;    
+    items: Array<IncomeItem>;
     unknownProducts: Array<string>;
 }
 

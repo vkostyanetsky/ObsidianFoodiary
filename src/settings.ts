@@ -1,4 +1,4 @@
-import { 
+import {
     App,
     PluginSettingTab,
     Setting,
@@ -6,13 +6,16 @@ import {
 import Foodiary from './main';
 
 export interface FoodiarySettings {
-    showProductFolderTitles: boolean;
-    groupEntriesByTitles: boolean;
+	showProductFolderTitles: boolean;
+	groupEntriesByTitles: boolean;
 	productsFolder: string;
-    propertyCalories: string;
-    propertyProtein: string;
-    propertyFat: string;
-    propertyCarbs: string;
+	propertyCalories: string;
+	propertyProtein: string;
+	propertyFat: string;
+	propertyCarbs: string;
+	propertyCholesterol: string;
+	propertySodium: string;
+	propertyFiber: string;
 }
 
 export const DEFAULT_SETTINGS: FoodiarySettings = {
@@ -22,7 +25,10 @@ export const DEFAULT_SETTINGS: FoodiarySettings = {
     propertyCalories: "calories",
     propertyProtein: "protein",
     propertyFat: "fat",
-    propertyCarbs: "carbs",
+	propertyCarbs: "carbs",
+	propertyCholesterol: "cholesterol",
+	propertySodium: "sodium",
+	propertyFiber: "fiber",
 }
 
 export class FoodiarySettingTab extends PluginSettingTab {
@@ -46,7 +52,7 @@ export class FoodiarySettingTab extends PluginSettingTab {
                 .onChange(async (value) => {
                     this.plugin.settings.showProductFolderTitles = value;
                     await this.plugin.saveSettings();
-                }));                
+                }));
 
         new Setting(containerEl)
             .setName('Group entries by titles')
@@ -56,7 +62,7 @@ export class FoodiarySettingTab extends PluginSettingTab {
                 .onChange(async (value) => {
                     this.plugin.settings.groupEntriesByTitles = value;
                     await this.plugin.saveSettings();
-                }));                
+                }));
 
         new Setting(containerEl).setName('Products').setHeading();
 
@@ -118,8 +124,8 @@ export class FoodiarySettingTab extends PluginSettingTab {
                     }
                     this.plugin.settings.propertyFat = value;
                     await this.plugin.saveSettings();
-                }));                
-                
+                }));
+
         new Setting(containerEl)
             .setName('Property for carbs')
                 .setDesc('Property of products folder files that contains number of carbohydrates.')
@@ -133,7 +139,75 @@ export class FoodiarySettingTab extends PluginSettingTab {
                         }
                         this.plugin.settings.propertyCarbs = value;
                         await this.plugin.saveSettings();
-                    })); 
+					}));
 
+		new Setting(containerEl)
+			.setName("Property for cholesterol")
+			.setDesc(
+				"Property of products folder files that contains number of cholesterol."
+			)
+			.addText((text) =>
+				text
+					.setPlaceholder(
+						DEFAULT_SETTINGS.propertyCholesterol.toString()
+					)
+					.setValue(
+						this.plugin.settings.propertyCholesterol.toString()
+					)
+					.onChange(async (value) => {
+						value = value.trim();
+						if (value == "") {
+							value = DEFAULT_SETTINGS.propertyCholesterol;
+						}
+						this.plugin.settings.propertyCholesterol = value;
+						await this.plugin.saveSettings();
+					})
+		);
+		
+		new Setting(containerEl)
+			.setName("Property for sodium")
+			.setDesc(
+				"Property of products folder files that contains number of sodium."
+			)
+			.addText((text) =>
+				text
+					.setPlaceholder(
+						DEFAULT_SETTINGS.propertySodium.toString()
+					)
+					.setValue(
+						this.plugin.settings.propertySodium.toString()
+					)
+					.onChange(async (value) => {
+						value = value.trim();
+						if (value == "") {
+							value = DEFAULT_SETTINGS.propertySodium;
+						}
+						this.plugin.settings.propertySodium = value;
+						await this.plugin.saveSettings();
+					})
+		);
+		
+		new Setting(containerEl)
+			.setName("Property for fiber")
+			.setDesc(
+				"Property of products folder files that contains number of fiber."
+			)
+			.addText((text) =>
+				text
+					.setPlaceholder(
+						DEFAULT_SETTINGS.propertyFiber.toString()
+					)
+					.setValue(
+						this.plugin.settings.propertyFiber.toString()
+					)
+					.onChange(async (value) => {
+						value = value.trim();
+						if (value == "") {
+							value = DEFAULT_SETTINGS.propertyFiber;
+						}
+						this.plugin.settings.propertyFiber = value;
+						await this.plugin.saveSettings();
+					})
+			);
 	}
 }
