@@ -16,6 +16,7 @@ export interface FoodiarySettings {
 	propertyCholesterol: string;
 	propertySodium: string;
 	propertyFiber: string;
+	propertyDailyCalorieGoal: string;
 }
 
 export const DEFAULT_SETTINGS: FoodiarySettings = {
@@ -29,6 +30,7 @@ export const DEFAULT_SETTINGS: FoodiarySettings = {
 	propertyCholesterol: "cholesterol",
 	propertySodium: "sodium",
 	propertyFiber: "fiber",
+	propertyDailyCalorieGoal: "",
 }
 
 export class FoodiarySettingTab extends PluginSettingTab {
@@ -209,5 +211,20 @@ export class FoodiarySettingTab extends PluginSettingTab {
 						await this.plugin.saveSettings();
 					})
 			);
+
+		new Setting(containerEl)
+            .setName('Property for daily calorie goal')
+                .setDesc('Leave blank to disable')
+                .addText(text => text
+                    .setPlaceholder(DEFAULT_SETTINGS.propertyDailyCalorieGoal.toString())
+                    .setValue(this.plugin.settings.propertyDailyCalorieGoal.toString())
+                    .onChange(async (value) => {
+                        value = value.trim();
+                        if (value == "") {
+                            value = DEFAULT_SETTINGS.propertyDailyCalorieGoal
+                        }
+                        this.plugin.settings.propertyDailyCalorieGoal = value;
+                        await this.plugin.saveSettings();
+		
 	}
 }
