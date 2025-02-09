@@ -53,10 +53,13 @@ export default class FoodiaryProducts {
                 title: file.basename,
                 titles: titles,
                 value: {
-                    calories: this.propertyValue(productProperties[plugin.settings.propertyCalories]),
-                    protein:  this.propertyValue(productProperties[plugin.settings.propertyProtein]),
-                    fat:      this.propertyValue(productProperties[plugin.settings.propertyFat]),
-                    carbs:    this.propertyValue(productProperties[plugin.settings.propertyCarbs]),
+                    calories:       this.propertyValue(productProperties[plugin.settings.propertyCalories]),
+                    protein:        this.propertyValue(productProperties[plugin.settings.propertyProtein]),
+                    fat:            this.propertyValue(productProperties[plugin.settings.propertyFat]),
+                    carbs:          this.propertyValue(productProperties[plugin.settings.propertyCarbs]),
+                    cholesterol:    this.propertyValue(productProperties[plugin.settings.propertyCholesterol]),
+                    sodium:         this.propertyValue(productProperties[plugin.settings.propertySodium]),
+                    fiber:          this.propertyValue(productProperties[plugin.settings.propertyFiber]),
                 }                
             }
 
