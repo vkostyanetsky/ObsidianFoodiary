@@ -1,6 +1,7 @@
 import { 
     MarkdownPostProcessorContext,    
     MarkdownRenderer,
+	TFile,
 } from 'obsidian';
 
 import { Parser } from 'expr-eval';
@@ -59,6 +60,39 @@ export default class FoodiaryCodeBlock {
         tr.createEl("td", {text: income.total.fat.toString()})
         tr.createEl("td", {text: income.total.carbs.toString()})        
         
+        if (plugin.settings.propertyDailyCalorieGoal != "") {
+            
+            const currentFile = plugin.app.workspace.getActiveFile();
+            if (!currentFile) {
+                console.warn("No active file found.");
+                return;
+            }
+
+            const frontmatter = await this.fileProperties(plugin, currentFile);
+            if (!frontmatter) {
+                console.warn("No frontmatter found in the current file.");
+                return;
+            }
+
+            const goal = this.propertyValue(frontmatter[plugin.settings.propertyDailyCalorieGoal]);
+
+            const remaining = (goal - income.total.calories)
+   
+            tr = table.createEl("tr")
+            
+            tr.createEl("td", {text: "REMAINING"})
+            tr.createEl("td", {text: remaining.toString() + ' / ' + goal.toString() })
+
+        }
+        
+    }
+
+    private static propertyValue(propertyValue: number) {
+        return typeof propertyValue == "number" ? propertyValue : 0;
+    }       
+
+    private static async fileProperties(plugin: Foodiary, file: TFile) {
+        return plugin.app.metadataCache.getFileCache(file)?.frontmatter;
     }
 
     private static async income(plugin: Foodiary, source: string) {
