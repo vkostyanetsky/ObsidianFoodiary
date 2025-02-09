@@ -194,6 +194,9 @@ export default class FoodiaryCodeBlock {
             protein: 0,
             fat: 0,
             carbs: 0,
+            cholesterol: 0,
+            sodium: 0,
+            fiber: 0,
         }
     }
 
