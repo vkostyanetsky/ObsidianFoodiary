@@ -214,7 +214,7 @@ export class FoodiarySettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
             .setName('Property for daily calorie goal')
-                .setDesc('Leave blank to disable')
+                .setDesc('Leave it blank if you do not want to set the goal.')
                 .addText(text => text
                     .setPlaceholder(DEFAULT_SETTINGS.propertyDailyCalorieGoal.toString())
                     .setValue(this.plugin.settings.propertyDailyCalorieGoal.toString())
@@ -225,6 +225,8 @@ export class FoodiarySettingTab extends PluginSettingTab {
                         }
                         this.plugin.settings.propertyDailyCalorieGoal = value;
                         await this.plugin.saveSettings();
-		
+                    })
+                );
+
 	}
 }
