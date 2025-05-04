@@ -41,3 +41,10 @@ As a result, the code block shows you something like this:
 | TOTAL   | 393      | 7       | 14  | 63    |
 
 So the plugin takes the food you refer to in the code block, finds it in the products catalog, and then shows total nutrition for each product you have consumed during the day.
+
+> [!tip]
+> Man, I nearly forgot! You can also add comments in the block using `#` or `/`/, like this:
+>
+> ```
+> Apples 150+150 // fresh ones
+> ```

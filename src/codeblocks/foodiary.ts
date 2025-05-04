@@ -206,7 +206,7 @@ export default class FoodiaryCodeBlock {
             weight: 0
         }
         
-        input = input.trim()
+        input = input.replace(/#.*|\/\/.*/g, '').trim()
         
         if (input != "") {
             const inputParts = input.split(" ")
