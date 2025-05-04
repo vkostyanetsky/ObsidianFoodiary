@@ -46,5 +46,8 @@ So the plugin takes the food you refer to in the code block, finds it in the pro
 > Man, I nearly forgot! You can also add comments in the block using `#` or `/`/, like this:
 >
 > ```
-> Apples 150+150 // fresh ones
+> // Breakfast:
+> 
+> Apples 150+150  # fresh ones
+> Donuts 85      
 > ```
