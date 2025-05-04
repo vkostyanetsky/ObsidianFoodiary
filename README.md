@@ -43,7 +43,7 @@ As a result, the code block shows you something like this:
 So the plugin takes the food you refer to in the code block, finds it in the products catalog, and then shows total nutrition for each product you have consumed during the day.
 
 > [!tip]
-> Man, I nearly forgot! You can also add comments in the block using `#` or `/`/, like this:
+> Man, I nearly forgot! You can also add comments in the block using `#` or `//`, like this:
 >
 > ```
 > // Breakfast:
