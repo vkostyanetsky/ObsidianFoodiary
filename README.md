@@ -51,3 +51,20 @@ So the plugin takes the food you refer to in the code block, finds it in the pro
 > Apples 150+150  # fresh ones
 > Donuts 85      
 > ```
+
+### Set your daily calorie goal (optional)
+
+If you want the plugin to show how many calories you've consumed compared to your daily goal, you can use the "Property for daily calorie goal" setting in the plugin.
+
+Here’s how it works:
+
+1. In the plugin settings, set "Property for daily calorie goal" to the name of a YAML field you want to use, for example: `goal`.
+2. Then, in the frontmatter of your daily note (the one that contains the foodiary block), add that property with your daily calorie target, like this:
+
+```
+---
+goal: 2000
+---
+```
+
+Now, when you open the daily note, the plugin will read this value and display how many calories you've consumed out of your daily goal. You need to close and reopen the note for the plugin to detect the updated goal.
