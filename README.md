@@ -17,7 +17,9 @@ Here is [an example](sample/Products) of the folder in the [sample vault](sample
 1. Each file refers to a product. The name of it is how you are going to refer it in your notes. You can also use the standard "aliases" property: for instance, you are able to create a note named "Apple", and then set the aliases: "Apples", "Red apples", etc. Take a look at example in the sample vault by the link above.
 3. Each file has four properties: `calories`, `protein`, `fat` and `carbs`. All of them are supposed to contain nutritional values for the represented product and must be indicated per 100 grams.
 
-Please note that you can rename those properties in the plugin's settings.
+Each file may also have three optional properties: `fiber`, `cholesterol` and `sodium`. The plugin does not show them by default, so if you want to track any of them, turn on the matching setting ("Show fiber", "Show cholesterol", "Show sodium"), and the code block will get a column for it.
+
+Please note that you can rename all of those properties in the plugin's settings.
 
 ### Use code block in daily notes
 

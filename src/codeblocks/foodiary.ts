@@ -40,6 +40,18 @@ export default class FoodiaryCodeBlock {
         tr.createEl("th", {text: "Fat"})
         tr.createEl("th", {text: "Carbs"})
 
+        if (plugin.settings.showFiber) {
+            tr.createEl("th", {text: "Fiber"})
+        }
+
+        if (plugin.settings.showCholesterol) {
+            tr.createEl("th", {text: "Cholesterol"})
+        }
+
+        if (plugin.settings.showSodium) {
+            tr.createEl("th", {text: "Sodium"})
+        }
+
         for (const item of income.items) {
 
             tr = table.createEl("tr")
@@ -49,6 +61,18 @@ export default class FoodiaryCodeBlock {
             tr.createEl("td", {text: item.value.protein.toString()})
             tr.createEl("td", {text: item.value.fat.toString()})
             tr.createEl("td", {text: item.value.carbs.toString()})
+
+            if (plugin.settings.showFiber) {
+                tr.createEl("td", {text: item.value.fiber.toString()})
+            }
+
+            if (plugin.settings.showCholesterol) {
+                tr.createEl("td", {text: item.value.cholesterol.toString()})
+            }
+
+            if (plugin.settings.showSodium) {
+                tr.createEl("td", {text: item.value.sodium.toString()})
+            }
         }
 
         tr = table.createEl("tr")
@@ -57,7 +81,19 @@ export default class FoodiaryCodeBlock {
         tr.createEl("td", {text: income.total.calories.toString()})
         tr.createEl("td", {text: income.total.protein.toString()})
         tr.createEl("td", {text: income.total.fat.toString()})
-        tr.createEl("td", {text: income.total.carbs.toString()})        
+        tr.createEl("td", {text: income.total.carbs.toString()})
+
+        if (plugin.settings.showFiber) {
+            tr.createEl("td", {text: income.total.fiber.toString()})
+        }
+
+        if (plugin.settings.showCholesterol) {
+            tr.createEl("td", {text: income.total.cholesterol.toString()})
+        }
+
+        if (plugin.settings.showSodium) {
+            tr.createEl("td", {text: income.total.sodium.toString()})
+        }
         
         if (plugin.settings.propertyDailyCalorieGoal != "") {
             
@@ -148,10 +184,13 @@ export default class FoodiaryCodeBlock {
 
     private static async calculateIncomeItemValues(income: Income) {
         for (const item of income.items) {
-            item.value.calories = Math.ceil(item.product.value.calories * item.weight / 100)
-            item.value.protein  = Math.ceil(item.product.value.protein  * item.weight / 100)
-            item.value.fat      = Math.ceil(item.product.value.fat      * item.weight / 100)
-            item.value.carbs    = Math.ceil(item.product.value.carbs    * item.weight / 100)
+            item.value.calories    = Math.ceil(item.product.value.calories    * item.weight / 100)
+            item.value.protein     = Math.ceil(item.product.value.protein     * item.weight / 100)
+            item.value.fat         = Math.ceil(item.product.value.fat         * item.weight / 100)
+            item.value.carbs       = Math.ceil(item.product.value.carbs       * item.weight / 100)
+            item.value.fiber       = Math.ceil(item.product.value.fiber       * item.weight / 100)
+            item.value.cholesterol = Math.ceil(item.product.value.cholesterol * item.weight / 100)
+            item.value.sodium      = Math.ceil(item.product.value.sodium      * item.weight / 100)
         }
     }
 
@@ -179,6 +218,9 @@ export default class FoodiaryCodeBlock {
         targetValue.protein += sourceValue.protein
         targetValue.fat += sourceValue.fat
         targetValue.carbs += sourceValue.carbs
+        targetValue.fiber += sourceValue.fiber
+        targetValue.cholesterol += sourceValue.cholesterol
+        targetValue.sodium += sourceValue.sodium
     }
 
     private static async getNutritionalValue(): Promise<NutritionalValue> {

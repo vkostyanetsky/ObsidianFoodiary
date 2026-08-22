@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## 1.2.6 - 2026-08-22
 
+### Added
+
+* Optional columns for fiber, cholesterol, and sodium in the code block. Each one is turned off by default and has its own setting: "Show fiber", "Show cholesterol", and "Show sodium" (thanks to @granttchart and @l-t-k!)
+
 ### Fixed
 
 * The daily calorie goal is now read from the note that contains the code block, instead of the currently active note. Previously the goal could be taken from an unrelated file when a diary was rendered in an embed, in a second pane, in a popout window, or while another note was focused.

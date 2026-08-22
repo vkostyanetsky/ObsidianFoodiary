@@ -8,6 +8,9 @@ import Foodiary from './main';
 export interface FoodiarySettings {
 	showProductFolderTitles: boolean;
 	groupEntriesByTitles: boolean;
+	showFiber: boolean;
+	showCholesterol: boolean;
+	showSodium: boolean;
 	productsFolder: string;
 	propertyCalories: string;
 	propertyProtein: string;
@@ -22,6 +25,9 @@ export interface FoodiarySettings {
 export const DEFAULT_SETTINGS: FoodiarySettings = {
     showProductFolderTitles: true,
     groupEntriesByTitles: true,
+    showFiber: false,
+    showCholesterol: false,
+    showSodium: false,
 	productsFolder: "Products",
     propertyCalories: "calories",
     propertyProtein: "protein",
@@ -63,6 +69,36 @@ export class FoodiarySettingTab extends PluginSettingTab {
                 .setValue(this.plugin.settings.groupEntriesByTitles)
                 .onChange(async (value) => {
                     this.plugin.settings.groupEntriesByTitles = value;
+                    await this.plugin.saveSettings();
+                }));
+
+        new Setting(containerEl)
+            .setName('Show fiber')
+            .setDesc('If enabled, the code block will show a column with the amount of fiber consumed.')
+            .addToggle(text => text
+                .setValue(this.plugin.settings.showFiber)
+                .onChange(async (value) => {
+                    this.plugin.settings.showFiber = value;
+                    await this.plugin.saveSettings();
+                }));
+
+        new Setting(containerEl)
+            .setName('Show cholesterol')
+            .setDesc('If enabled, the code block will show a column with the amount of cholesterol consumed.')
+            .addToggle(text => text
+                .setValue(this.plugin.settings.showCholesterol)
+                .onChange(async (value) => {
+                    this.plugin.settings.showCholesterol = value;
+                    await this.plugin.saveSettings();
+                }));
+
+        new Setting(containerEl)
+            .setName('Show sodium')
+            .setDesc('If enabled, the code block will show a column with the amount of sodium consumed.')
+            .addToggle(text => text
+                .setValue(this.plugin.settings.showSodium)
+                .onChange(async (value) => {
+                    this.plugin.settings.showSodium = value;
                     await this.plugin.saveSettings();
                 }));
 
