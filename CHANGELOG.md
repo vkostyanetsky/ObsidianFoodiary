@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## 1.2.6 - 2026-08-22
+
+### Fixed
+
+* The daily calorie goal is now read from the note that contains the code block, instead of the currently active note. Previously the goal could be taken from an unrelated file when a diary was rendered in an embed, in a second pane, in a popout window, or while another note was focused.
+
+### Security
+
+* Updated the transitive `js-yaml` dependency to 4.3.1.
+* Updated the transitive `brace-expansion` dependency to 1.1.18.
+
 ## 1.2.5 - 2025-05-04
 
 ### Added

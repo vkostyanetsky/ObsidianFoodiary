@@ -2,13 +2,15 @@
 
 [![ESLint](https://github.com/vkostyanetsky/ObsidianFoodiary/actions/workflows/eslint.yml/badge.svg)](https://github.com/vkostyanetsky/ObsidianFoodiary/actions/workflows/eslint.yml)
 
+**English** | [Русский](README.ru.md)
+
 It is a plugin for [Obsidian](https://obsidian.md) designed to help you monitor the nutritional value of the food you eat.
 
 ## 🙂 How to use it?
 
 ### Create the products folder
 
-First, you should specify the "Product folder" in the plugin's settings ("Products" by default). It refers to a folder in your vault that is supposed to contain nutrition data for the food you eat.  
+First, you should specify the "Products folder" in the plugin's settings ("Products" by default). It refers to a folder in your vault that is supposed to contain nutrition data for the food you eat.  
 
 Here is [an example](sample/Products) of the folder in the [sample vault](sample). Please note:
 

@@ -1,7 +1,6 @@
 import { 
     MarkdownPostProcessorContext,    
     MarkdownRenderer,
-	TFile,
 } from 'obsidian';
 
 import { Parser } from 'expr-eval';
@@ -62,15 +61,9 @@ export default class FoodiaryCodeBlock {
         
         if (plugin.settings.propertyDailyCalorieGoal != "") {
             
-            const currentFile = plugin.app.workspace.getActiveFile();
-            if (!currentFile) {
-                console.warn("No active file found.");
-                return;
-            }
-
-            const frontmatter = await this.fileProperties(plugin, currentFile);
+            const frontmatter = await this.fileProperties(plugin, ctx.sourcePath);
             if (!frontmatter) {
-                console.warn("No frontmatter found in the current file.");
+                console.warn(`No frontmatter found in "${ctx.sourcePath}".`);
                 return;
             }
 
@@ -91,8 +84,8 @@ export default class FoodiaryCodeBlock {
         return typeof propertyValue == "number" ? propertyValue : 0;
     }       
 
-    private static async fileProperties(plugin: Foodiary, file: TFile) {
-        return plugin.app.metadataCache.getFileCache(file)?.frontmatter;
+    private static async fileProperties(plugin: Foodiary, sourcePath: string) {
+        return plugin.app.metadataCache.getCache(sourcePath)?.frontmatter;
     }
 
     private static async income(plugin: Foodiary, source: string) {
