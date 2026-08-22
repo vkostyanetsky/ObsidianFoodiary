@@ -1,32 +1,52 @@
 name: Release Obsidian plugin
 
 on:
-  workflow_dispatch:      
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  # Required by actions/attest-build-provenance to sign the release assets.
+  id-token: write
+  attestations: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
 
       - name: Use Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v5
         with:
-          node-version: "20.x"
+          node-version: "22.x"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
 
       - name: Build plugin
-        run: |
-          npm install
-          npm run build
+        run: npm run build
+
+      - name: Attest build provenance
+        uses: actions/attest-build-provenance@v4
+        with:
+          subject-path: main.js
+
+      - name: Read version from manifest
+        id: version
+        run: echo "tag=$(jq -r .version manifest.json)" >> "$GITHUB_OUTPUT"
 
       - name: Create release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ steps.version.outputs.tag }}
         run: |
-          tag="${GITHUB_REF#refs/tags/}"
-
-          gh release create "$tag" \
-            --title="$tag" \
+          gh release create "$TAG" \
+            --title="$TAG" \
             --draft \
+            --target="$GITHUB_SHA" \
             main.js manifest.json
