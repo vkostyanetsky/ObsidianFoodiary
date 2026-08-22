@@ -1,6 +1,6 @@
 # Obsidian Foodiary 🥪 🍎 🪵
 
-[![ESLint](https://github.com/vkostyanetsky/ObsidianFoodiary/actions/workflows/eslint.yml/badge.svg)](https://github.com/vkostyanetsky/ObsidianFoodiary/actions/workflows/eslint.yml)
+[![CI](https://github.com/vkostyanetsky/ObsidianFoodiary/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/vkostyanetsky/ObsidianFoodiary/actions/workflows/ci.yml)
 
 **English** | [Русский](README.ru.md)
 
